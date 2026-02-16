@@ -3,10 +3,12 @@ import Logo from "./components/site/logo"
 import Button from "./components/site/button"
 import Input from "./components/site/input"
 import Accordion from "./components/site/accordion"
+import Header from "./components/header/header"
 // test commit message
 function App() {
   return (
     <div className='text-3xl bg-secondary text-p'>
+      <Header/>
       <Logo />
       <Button btntype="primary" text="Get Started" />
       <Button btntype="secondary" text="Get Started" />
