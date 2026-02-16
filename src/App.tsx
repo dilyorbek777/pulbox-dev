@@ -4,7 +4,8 @@ import Button from "./components/site/button"
 import Input from "./components/site/input"
 import Accordion from "./components/site/accordion"
 import Hero3D from "./components/Hero3d"
-import MonitoringCarousel from "./components/site/MonitoringCarousel"
+import CustomerReview from "./components/CustomerReview"
+// import VibeVideos from "./components/VibeVideos"
 // test commit message
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
       <Accordion title="Section 1" content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente laborum cupiditate possimus labore, hic temporibus velit dicta earum suscipit commodi eum enim atque at? Et perspiciatis dolore iure voluptatem." />
 
       <Hero3D />
+      <CustomerReview />
+      {/* <VibeVideos /> */}
       {/* <MonitoringCarousel /> */}
     </div>
   )
