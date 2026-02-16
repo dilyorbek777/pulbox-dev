@@ -3,14 +3,11 @@ import logo from "../../assets/logo.png";
 function Logo() {
   return (
     <>
-      <div className="flex items-center gap-2">
-        <p>..</p>
         <img
-          className="w-[132px] h-[40px]"
+          className="w-[132px] h-[40px] max-md:w-[119px] max-md:h-[36px]"
           src={logo}
           alt="Pulbox rebranding logo"
         />
-      </div>
     </>
   );
 }
