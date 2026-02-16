@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 function Logo() {
   return (
     <>
-      <div>
+      <div className="flex items-center gap-2">
         <p>..</p>
         <img
           className="w-[132px] h-[40px]"

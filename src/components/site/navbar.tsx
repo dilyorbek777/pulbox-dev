@@ -41,10 +41,10 @@ function Navbar() {
         }
     }, [])
     return (
-        <div className={`flex fixed top-0 left-0 right-0 z-50 justify-center items-center px-[120px] py-[35px]  w-full mx-auto transition-all duration-300 ${navBg ? 'bg-transparent' : 'bg-white'}`}>
-            <div className="max-w-[1440px] w-full flex justify-between items-center">
+        <div className={`flex fixed top-0 h-[103px] left-0 right-0 z-50 justify-center items-center px-[120px] py-[35px]  w-full mx-auto transition-all duration-300 ${navBg ? 'bg-transparent' : 'bg-white'}`}>
+            <div className="max-w-[1440px] w-full flex justify-between  items-center">
                 <Logo />
-                <ul className="links flex gap-[48px] text-lg font-sans font-semibold ">
+                <ul className="links flex gap-[48px] items-center justify-center text-lg font-sans font-semibold ">
                     {links.map((link) => (
                         <li key={link.href}>
                             <a href={link.href}>{link.label}</a>
