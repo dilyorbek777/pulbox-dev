@@ -36,10 +36,10 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, image, username }) =>
       />
 
 
-      <div onClick={toggleVideo} className={`player-controls flex items-center justify-between  flex-col w-full h-full text-white absolute left-0 bottom-0 z-10 px-6 py-6 ${isPlaying ? " bg-transparent" : " bg-[#00000076]"}`}>
+      <div onClick={toggleVideo} className={`cursor-pointer player-controls flex items-center justify-between  flex-col w-full h-full text-white absolute left-0 bottom-0 z-10 px-6 py-6 ${isPlaying ? " bg-transparent" : " bg-[#00000076]"}`}>
         <div className="h-[18%]"></div>
-        <button onClick={toggleVideo}>
-          {isPlaying ? <CiGrid2V /> : <IoPlayCircleOutline className='text-5xl'
+        <button className="cursor-pointer" onClick={toggleVideo}>
+          {isPlaying ? " " : <IoPlayCircleOutline className='text-5xl'
             onClick={toggleVideo} />}
         </button>
         <div className="flex flex-col">

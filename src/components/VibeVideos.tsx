@@ -5,7 +5,6 @@ import { useRef, useState } from "react";
 import VideoCard from './site/VideoCard';
 
 function VibeVideos() {
-    const maxLeng = 100
     const videos = [
         {
             title: "Sing for the moment - Eminem Lorem ipsum dolor sit, amet consectetur adipisicing.",
@@ -35,17 +34,6 @@ function VibeVideos() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const toggleVideo = () => {
-        if (!videoRef.current) return;
-
-        if (isPlaying) {
-            videoRef.current.pause();
-        } else {
-            videoRef.current.play();
-        }
-
-        setIsPlaying(!isPlaying);
-    };
 
     return (
         <div className='max-w-[1440px] py-14 w-full flex-col mx-auto flex items-center justify-between'>
@@ -60,8 +48,6 @@ function VibeVideos() {
                         src={video.url}
                         title={video.title}
                         username={video.username} />
-
-
                 ))}
             </div>
         </div>
