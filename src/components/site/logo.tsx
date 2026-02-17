@@ -4,7 +4,6 @@ function Logo() {
   return (
     <>
       <div>
-        <p>..</p>
         <img
           className="w-[132px] h-[40px]"
           src={logo}

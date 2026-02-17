@@ -1,10 +1,9 @@
-import Navbar from "./navbar/navbar"
+
 
 export default function Header(){
     return(
         <div>
-            <Navbar/>
-
+            <h1 className="mt-[100px]">helo</h1>
         </div>
     )
 }
