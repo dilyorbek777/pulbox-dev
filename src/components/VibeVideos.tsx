@@ -1,7 +1,5 @@
 import { BsArrowUpRight } from 'react-icons/bs'
 import videop from '../assets/videos/tempvideo.mp4'
-import { IoPlayCircleOutline } from 'react-icons/io5'
-import { useRef, useState } from "react";
 import VideoCard from './site/VideoCard';
 
 function VibeVideos() {
@@ -31,13 +29,12 @@ function VibeVideos() {
             image: "https://picsum.photos/200/300",
             username: "Pulbox_uz"
         }]
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const [isPlaying, setIsPlaying] = useState(false);
+
 
 
     return (
         <div className='max-w-[1440px] py-14 w-full flex-col mx-auto flex items-center justify-between'>
-            <div className="flex my-12 justify-between w-full">
+            <div className="flex my-12 px-1.5 justify-between w-full">
                 <h3 className='font-bold text-3xl'>Vibe Videos</h3>
                 <a href="#" className='flex text-lg font-medium items-center justify-center text-[#17BE86]'>Instagramda ko'rish <BsArrowUpRight /></a>
             </div>

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { CiGrid2V } from "react-icons/ci";
 import { IoPlayCircleOutline } from "react-icons/io5";
 
 interface VideoCardProps {
@@ -27,7 +26,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, image, username }) =>
   };
 
   return (
-    <div className="w-[280px] h-[500px] relative overflow-hidden rounded-3xl">
+    <div className="w-[280px] mx-auto my-3 h-[500px] relative overflow-hidden rounded-3xl">
       <video
         ref={videoRef}
         width="300"
