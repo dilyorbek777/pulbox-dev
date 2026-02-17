@@ -8,9 +8,9 @@ function Button({ text, btntype,className }: {
         <>
 
             {btntype === "primary" ? (
-                <button className={`bg-primary text-[16px] text-secondary px-[26px] py-[14.5px] rounded-[15px] ${className}`}>{text}</button>
+                <button className={`bg-primary text-[18px] text-secondary px-[45px] py-[17px] rounded-[15px] flex justify-between items-center gap-[10px] ${className}`}>{text}</button>
             ) : (
-                <button className={`bg-secondary border primary-border  text-[16px] text-primary px-[26px] py-[14.5px] rounded-[15px] ${className}`}>{text}</button>
+                <button className={`bg-secondary border primary-border  text-[18px] text-primary px-[45px] py-[17px] rounded-[15px] flex justify-between items-center gap-[10px] ${className}`}>{text}</button>
             )}
         </>
     )
