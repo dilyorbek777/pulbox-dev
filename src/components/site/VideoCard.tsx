@@ -29,9 +29,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, image, username }) =>
     <div className="w-[280px] mx-auto my-3 h-[500px] relative overflow-hidden rounded-3xl">
       <video
         ref={videoRef}
-        width="300"
         src={src}
-        className="w-[280px] bg-contain h-[500px] bg-center  rounded-3xl bg-[#00000076]"
+        className="w-[280px] bg-contain overflow-hidden object-cover h-[500px] bg-center  rounded-3xl bg-[#00000076]"
       />
 
 

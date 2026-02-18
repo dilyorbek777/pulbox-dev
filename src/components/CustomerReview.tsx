@@ -27,7 +27,7 @@ function CustomerReview() {
 
 
     return (
-        <div className="max-w-[1440px] w-full mx-auto">
+        <div className="max-w-[1440px] w-full mx-auto px-1.5">
             <div className="title text-center py-[100px] max-md:py-[50px]">
                 <h2 className="text-[32px] font-bold text-primary">Mijozlarimiz fikrlari</h2>
                 <p className="text-[16px] font-sans font-normal text-[#4B5563] my-3">Barcha qurilmalaringizni bitta ekranda kuzating. Xatoliklarni oldindan aniqlang va biznesingizni <br /> samarali boshqaring.</p>
