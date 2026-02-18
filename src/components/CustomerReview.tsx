@@ -34,7 +34,7 @@ function CustomerReview() {
             </div>
             <div className="reviews w-full flex items-center justify-between max-md:flex-col max-md:gap-10 gap-6">
                 {reviews.map((review) => (
-                    <div className="review bg-[#F9FAFB] rounded-2xl shadow-lg p-6 text-center flex flex-col gap-6">
+                    <div key={review.name} className="review bg-[#F9FAFB] rounded-2xl shadow-lg p-6 text-center flex flex-col gap-6">
                         <div className="flex items-center justify-start gap-2.5">
                             {review.star && Array.from({ length: review.star }).map((_, index) => (
                                 <FaStar key={index} className="text-amber-300" />
