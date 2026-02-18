@@ -5,7 +5,7 @@ import Input from "./components/site/input"
 import Accordion from "./components/site/accordion"
 import Hero3D from "./components/Hero3d"  
 import CustomerReview from "./components/CustomerReview"
-import Header from "./components/header/header"
+import VibeVideos from "./components/VibeVideos"
 // import VibeVideos from "./components/VibeVideos"
 // test commit message
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
       <Hero3D />
       <CustomerReview />
-      {/* <VibeVideos /> */}
+      <VibeVideos />
       {/* <MonitoringCarousel /> */}
     </div>
   )

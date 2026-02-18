@@ -1,8 +1,9 @@
 import type { FC } from "react";
 import { motion } from "framer-motion";
-import left from "../assets/laptop-left.png";
-import center from "../assets/laptop-center.png";
-import right from "../assets/laptop-right.png";
+// import left from "../../assets/images/laptop-left.png";
+import left from '../assets/images/laptop-center.png'
+import center from "../assets/images/laptop-center.png";
+import right from "../assets/images/laptop-right.png";
 
 interface FeatureCard {
   title: string;

@@ -1,29 +1,52 @@
+import { BsArrowUpRight } from 'react-icons/bs'
+import videop from '../assets/videos/tempvideo.mp4'
+import VideoCard from './site/VideoCard';
+
 function VibeVideos() {
     const videos = [
         {
-            title: "Video 1",
-            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            title: "Sing for the moment - Eminem Lorem ipsum dolor sit, amet consectetur adipisicing.",
+            url: videop,
+            image: "https://picsum.photos/200/300",
+            username: "Pulbox_uz"
+
         },
         {
-            title: "Video 2",
-            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            title: "Him and I - G-eazy ft. Halsey  Lorem ipsum dolor sit",
+            url: videop,
+            image: "https://picsum.photos/200/300",
+            username: "Pulbox_uz"
         },
         {
-            title: "Video 3",
-            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            title: "The search - NF Lorem Lorem ipsum dolor sit, amet consectetur adipisicing.",
+            url: videop,
+            image: "https://picsum.photos/200/300",
+            username: "Pulbox_uz"
         },
         {
-            title: "Video 4",
-            url: "https://www.instagram.com/reels/DUxvS3MDGxp/"
+            title: "Him and I - G-eazy ft. Halsey  Lorem ipsum dolor sit, amet consectetur adipisicing.",
+            url: videop,
+            image: "https://picsum.photos/200/300",
+            username: "Pulbox_uz"
         }]
+
+
+
     return (
-        <div>
-            {videos.map((video) => (
-                <div key={video.title}>
-                    <h2>{video.title}</h2>
-                    <iframe src={video.url} title={video.title} />
-                </div>
-            ))}
+        <div className='max-w-[1440px] py-14 w-full flex-col mx-auto flex items-center justify-between'>
+            <div className="flex my-12 px-1.5 justify-between w-full">
+                <h3 className='font-bold text-3xl'>Vibe Videos</h3>
+                <a href="#" className='flex text-lg font-medium items-center justify-center text-[#17BE86]'>Instagramda ko'rish <BsArrowUpRight /></a>
+            </div>
+            <div className="flex w-full items-center justify-between flex-wrap ">
+                {videos.map((video) => (
+                    <VideoCard
+                        image={video.image}
+                        src={video.url}
+                        title={video.title}
+                        username={video.username} />
+                ))}
+            </div>
         </div>
     )
 }
