@@ -57,6 +57,8 @@ export default function Hero3D() {
         </p>
       </div>
 
+      {error == null ? "" : error}
+
       <div className="w-full flex flex-col  items-center py-16 ">
 
         {/* ===== CAROUSEL ===== */}
@@ -119,7 +121,7 @@ export default function Hero3D() {
 
         <div className="flex gap-2 my-10">
           {items.map((i, index) => (
-            <div
+            <div key={i.title}
               onClick={() => setActive(index)} className={`flex w-3 h-3 rounded-full ${active === index ? " bg-[#17BE86E8]" : "bg-[#D9D9D9]"}`}>
             </div>
           ))}
