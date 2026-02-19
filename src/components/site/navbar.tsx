@@ -38,10 +38,7 @@ function Navbar() {
     }
     useEffect(() => {
         window.addEventListener('scroll', changeNavBg);
-        return () => {
-            console.log('removed');
-
-        }
+        
     }, [])
     return (
         <div className={`flex max-md:px-6 max-md:py-5 fixed  top-0 h-[103px] left-0 right-0 z-50 justify-center items-center px-[120px] max-[1140px]:px-6 py-[35px]  w-full mx-auto transition-all duration-300 ${navBg ? 'bg-transparent' : 'bg-white'}`}>
