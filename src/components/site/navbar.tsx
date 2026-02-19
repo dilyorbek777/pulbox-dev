@@ -34,7 +34,7 @@ function Navbar() {
     const [navBg, setNavBg] = useState(false);
     const [btn, setBtn] = useState(false);
     const changeNavBg = () => {
-        window.scrollY <= 5 ? setNavBg(true) : setNavBg(false);
+       return window.scrollY <= 5 ? setNavBg(true) : setNavBg(false);
     }
     useEffect(() => {
         window.addEventListener('scroll', changeNavBg);

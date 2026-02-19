@@ -2,9 +2,9 @@ import Button from "../site/button";
 
 export default function LeftSide() {
   return (
-    <section className="max-w-[530px] w-full flex flex-col gap-[32px]">
+    <section className="max-w-[530px] mb-16 w-full flex flex-col gap-[32px] max-[1200px]:max-w-[720px] my-auto  max-[1200px]:mt-18 max-[1200px]:mb-0 max-[768px]:mt-1 max-[410px]:max-w-83.75">
       <div>
-        <h1 className="text-[60px] font-bold text-[#000000]">
+        <h1 className="text-[60px] font-bold text-[#000000] max-[1200px]:text-[40px] max-[600px]:text-[32px] ">
           O'z-o'ziga xizmat ko'rsatish uchun
           <span className="bg-gradient-to-r  from-[#1564F6] to-[#03B485] bg-clip-text text-transparent">
             {" "}
@@ -17,14 +17,15 @@ export default function LeftSide() {
         </h1>
       </div>
       <div>
-        <p className="text-[#4B5563] text-[24px] leading-8 max-w-[487px] w-full ">
+        <p className="text-[#4B5563] text-[24px] leading-8 max-w-[487px] w-full max-[1200px]:text-[20px] max-w-[720px]:text-[16px] max-[410px]:text-[18 px]">
           Hayot uchun oson va samarali echimlar. Pulbox bilan oson va xavfsiz.
           Biznesingizni masofadan boshqaring va daromadingizni oshiring.
         </p>
       </div>
-      <div className="max-w-[468px] w-full flex justify-between">
+      <div className="max-w-[485px] w-full flex justify-between max-[560px]:flex-col gap-4 max-[560px]:m-auto p-5">
         <Button 
           btntype="primary"
+          className="max-[400px]:px-4 max-[400px]:py-4"
           text={
             <>
               Demo ko'rish
@@ -53,6 +54,7 @@ export default function LeftSide() {
         />
         <Button
           btntype="secondary"
+          className="max-[400px]:px-4 max-[400px]:py-3"
           text={
             <>
               Bog'lanish
