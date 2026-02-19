@@ -1,40 +1,20 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface Item {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
+  title: "string",
+  description: "string",
+  image: "string",
+  is_active: true
 }
 
-const items: Item[] = [
-  {
-    id: 0,
-    title: "Savdo statistikasi",
-    description: "Kundalik, haftalik va oylik tushumlarni real vaqtda kuzating.",
-    image: "https://picsum.photos/290/500",
-  },
-  {
-    id: 1,
-    title: "To'lovlar nazorati",
-    description: "Barcha tranzaksiyalarni bir joyda kuzating.",
-    image: "https://picsum.photos/270/300",
-  },
-  {
-    id: 2,
-    title: "Qurilma holati",
-    description: "Online/offline qurilmalarni monitoring qiling.",
-    image: "https://picsum.photos/250/300",
-  },
-  {
-    id: 3,
-    title: "Joylashuv samaradorligi",
-    description: "Qaysi joyda ko'proq daromad ekanini aniqlang.",
-    image: "https://picsum.photos/210/300",
-  },
-];
 
 export default function Hero3D() {
+
+  const [items, setItems] = useState<Item[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [active, setActive] = useState(0);
 
   const getPosition = (index: number) => {
@@ -49,6 +29,22 @@ export default function Hero3D() {
     return "hidden";
   };
 
+  useEffect(() => {
+    axios
+      .get("/api/v1/carousels/")
+      .then((res) => {
+        setItems(res.data.results);
+        console.log(res.data["results"]);
+
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <section className="relative min-h-screen py-[62px] bg-radial-[at_50%_70%] to-gray-100 via-white from-[#17BE86] flex flex-col items-center justify-center overflow-hidden px-4">
       <div className="text-center mb-1 max-w-2xl">
@@ -61,25 +57,27 @@ export default function Hero3D() {
         </p>
       </div>
 
-      <div className="w-full flex flex-col items-center py-16 ">
+      <div className="w-full flex flex-col  items-center py-16 ">
 
         {/* ===== CAROUSEL ===== */}
-        <div className="relative my-5 w-full max-w-6xl h-[620px] flex items-center justify-center perspective">
+        <div className="relative my-5 w-full max-w-6xl h-[620px] max-lg:h-[300px] flex items-center justify-center perspective">
           {items.map((item, index) => {
             const position = getPosition(index);
 
             return (
               <div
-                key={item.id}
-                className={`absolute transition-all duration-500 ease-in-out
+
+                onClick={() => setActive(index)}
+                key={item.title}
+                className={`absolute  transition-all duration-500 ease-in-out
               ${position === "center" &&
                   "z-30 scale-100 translate-x-0 rotate-y-0 opacity-100"
                   }
               ${position === "left" &&
-                  "z-20 -translate-x-[280px] rotate-y-[75deg] opacity-80"
+                  "z-20 -translate-x-[500px] max-lg:-translate-x-[200px] rotate-y-[75deg] opacity-50"
                   }
               ${position === "right" &&
-                  "z-20 translate-x-[280px] rotate-y-[-75deg] opacity-80"
+                  "z-20 translate-x-[500px] max-lg:translate-x-[200px] rotate-y-[-75deg] opacity-50"
                   }
               ${position === "hidden" && "opacity-0 scale-75 pointer-events-none"}
               `}
@@ -90,18 +88,21 @@ export default function Hero3D() {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-[816px] h-[603px] object-cover drop-shadow-2xl"
+                  className={`max-w-[816px] max-lg:h-[300px] overflow-hidden h-[603px] object-cover drop-shadow-2xl ${loading ? 'scale-110 blur-2xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0'}`}
                 />
               </div>
             );
           })}
         </div>
 
+
+
         {/* ===== CARDS ===== */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-5xl">
+        <div className="grid max-[625px]:grid-cols-1 grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-5xl">
           {items.map((item, index) => (
             <div
-              key={item.id}
+              key={item.title}
               onClick={() => setActive(index)}
               className={`cursor-pointer rounded-2xl bg-white p-6 transition-all duration-300 shadow-md
               ${active === index
@@ -112,6 +113,14 @@ export default function Hero3D() {
             >
               <h3 className="font-bold text-lg mb-2">{item.title}</h3>
               <p className="text-sm opacity-80">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-2 my-10">
+          {items.map((i, index) => (
+            <div
+              onClick={() => setActive(index)} className={`flex w-3 h-3 rounded-full ${active === index ? " bg-[#17BE86E8]" : "bg-[#D9D9D9]"}`}>
             </div>
           ))}
         </div>
