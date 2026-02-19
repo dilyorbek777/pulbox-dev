@@ -41,6 +41,7 @@ function VibeVideos() {
             <div className="flex w-full items-center justify-between flex-wrap ">
                 {videos.map((video) => (
                     <VideoCard
+                        key={video.image}
                         image={video.image}
                         src={video.url}
                         title={video.title}

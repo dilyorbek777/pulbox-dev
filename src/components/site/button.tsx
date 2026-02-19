@@ -1,6 +1,6 @@
-function Button({ text, btntype,className }: {
+function Button({ text, btntype, className,onclick }: {
     text: string | React.ReactNode;
-    onClick?: () => void;
+    onclick?: Function;
     btntype: "primary" | "secondary";
     className?: string
 }) {
