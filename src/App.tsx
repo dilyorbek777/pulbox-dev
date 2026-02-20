@@ -8,6 +8,7 @@ import CustomerReview from "./components/CustomerReview"
 import Header from "./components/header/header"
 import VibeVideos from "./components/VibeVideos"
 import Catalog from "./components/Catalog"
+import ReasonPullbox from "./components/resolution/resolution"
 // import VibeVideos from "./components/VibeVideos"
 // test commit message
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Accordion title="Section 1" content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente laborum cupiditate possimus labore, hic temporibus velit dicta earum suscipit commodi eum enim atque at? Et perspiciatis dolore iure voluptatem." />
 
       <Hero3D />
+      <ReasonPullbox/>
       <CustomerReview />
       <VibeVideos />
       <Catalog />
