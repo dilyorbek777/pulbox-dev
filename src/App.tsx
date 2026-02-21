@@ -1,7 +1,6 @@
 import "./index.css"
 import Logo from "./components/site/logo"
 import Button from "./components/site/button"
-import Input from "./components/site/input"
 import Accordion from "./components/site/accordion"
 import Hero3D from "./components/Hero3d"
 import CustomerReview from "./components/CustomerReview"
