@@ -1,44 +1,53 @@
-import type { FC } from "react";
-import { motion } from "framer-motion";
-// import left from "../../assets/images/laptop-left.png";
-import left from '../assets/images/laptop-center.png'
-import center from "../assets/images/laptop-center.png";
-import right from "../assets/images/laptop-right.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-interface FeatureCard {
-  title: string;
-  description: string;
+interface Item {
+  title: "string",
+  description: "string",
+  image: "string",
+  is_active: true
 }
 
-const features: FeatureCard[] = [
-  {
-    title: "Savdo statistikasi",
-    description:
-      "Kunlik, haftalik va oylik tushumlarni real vaqtda kuzating.",
-  },
-  {
-    title: "To‘lovlar nazorati",
-    description:
-      "Barcha tranzaksiyalarni bir joyda nazorat qiling.",
-  },
-  {
-    title: "Qurilma holati",
-    description:
-      "Vending qurilmalarining ishlash holatini tekshiring.",
-  },
-  {
-    title: "Joylashuv samaradorligi",
-    description:
-      "Qaysi nuqta ko‘proq daromad keltirayotganini aniqlang.",
-  },
-];
 
-const Hero3D: FC = () => {
+export default function Hero3D() {
+
+  const [items, setItems] = useState<Item[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const [active, setActive] = useState(0);
+
+  const getPosition = (index: number) => {
+    const total = items.length;
+
+    if (index === active) return "center";
+
+    if (index === (active - 1 + total) % total) return "left";
+
+    if (index === (active + 1) % total) return "right";
+
+    return "hidden";
+  };
+
+  useEffect(() => {
+    axios
+      .get("/api/v1/carousels/")
+      .then((res) => {
+        setItems(res.data.results);
+        console.log(res.data["results"]);
+
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <section className="relative min-h-screen py-[62px] bg-radial-[at_50%_70%] to-gray-100 via-white from-[#17BE86] flex flex-col items-center justify-center overflow-hidden px-4">
-
-      {/* Title */}
-      <div className="text-center mb-16 max-w-2xl">
+      <div className="text-center mb-1 max-w-2xl">
         <h1 className="text-[32px] md:text-4xl font-bold text-gray-800">
           Real vaqtda monitoring platformasi
         </h1>
@@ -48,62 +57,76 @@ const Hero3D: FC = () => {
         </p>
       </div>
 
-      {/* 3D Laptop Section */}
-      <div className="relative w-full flex items-center justify-center perspective">
+      {error == null ? "" : error}
 
-        {/* Left */}
-        <motion.img
-          src={left}
-          alt="Left screen"
-          initial={{ rotateY: 30, scale: 0.9 }}
-          whileHover={{ rotateY: 15, scale: 1 }}
-          transition={{ type: "spring", stiffness: 120 }}
-          className="absolute left-0 md:left-10 w-60 md:w-80 drop-shadow-2xl"
-          style={{ transformStyle: "preserve-3d" }}
-        />
+      <div className="w-full flex flex-col  items-center py-16 ">
 
-        {/* Center */}
-        <motion.img
-          src={center}
-          alt="Main dashboard"
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 150 }}
-          className="relative z-10 w-72 md:w-[500px] drop-shadow-2xl"
-        />
+        {/* ===== CAROUSEL ===== */}
+        <div className="relative my-5 w-full max-w-6xl h-[620px] max-lg:h-[300px] flex items-center justify-center perspective">
+          {items.map((item, index) => {
+            const position = getPosition(index);
 
-        {/* Right */}
-        <motion.img
-          src={right}
-          alt="Right screen"
-          initial={{ rotateY: -30, scale: 0.9 }}
-          whileHover={{ rotateY: -15, scale: 1 }}
-          transition={{ type: "spring", stiffness: 120 }}
-          className="absolute right-0 md:right-10 w-60 md:w-80 drop-shadow-2xl"
-          style={{ transformStyle: "preserve-3d" }}
-        />
-      </div>
+            return (
+              <div
 
-      {/* Feature Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-20 max-w-6xl w-full">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ y: -8 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            className="bg-white rounded-2xl shadow-lg p-6 text-center hover:border-b-2 border-primary hover:primary-border"
-          >
-            <h3 className="font-semibold text-gray-800">
-              {feature.title}
-            </h3>
-            <p className="text-gray-500 mt-2 text-sm">
-              {feature.description}
-            </p>
-          </motion.div>
-        ))}
+                onClick={() => setActive(index)}
+                key={item.title}
+                className={`absolute  transition-all duration-500 ease-in-out
+              ${position === "center" &&
+                  "z-30 scale-100 translate-x-0 rotate-y-0 opacity-100"
+                  }
+              ${position === "left" &&
+                  "z-20 -translate-x-[500px] max-lg:-translate-x-[200px] rotate-y-[75deg] opacity-50"
+                  }
+              ${position === "right" &&
+                  "z-20 translate-x-[500px] max-lg:translate-x-[200px] rotate-y-[-75deg] opacity-50"
+                  }
+              ${position === "hidden" && "opacity-0 scale-75 pointer-events-none"}
+              `}
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className={`max-w-[816px] max-lg:h-[300px] overflow-hidden h-[603px] object-cover drop-shadow-2xl ${loading ? 'scale-110 blur-2xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0'}`}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+
+
+        {/* ===== CARDS ===== */}
+        <div className="grid max-[625px]:grid-cols-1 grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-5xl">
+          {items.map((item, index) => (
+            <div
+              key={item.title}
+              onClick={() => setActive(index)}
+              className={`cursor-pointer rounded-2xl bg-white p-6 transition-all duration-300 shadow-md
+              ${active === index
+                  ? " border-b-4 border-[#17BE86] scale-105 shadow-2xl"
+                  : " hover:shadow-2xl"
+                }
+            `}
+            >
+              <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+              <p className="text-sm opacity-80">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-2 my-10">
+          {items.map((i, index) => (
+            <div key={i.title}
+              onClick={() => setActive(index)} className={`flex w-3 h-3 rounded-full ${active === index ? " bg-[#17BE86E8]" : "bg-[#D9D9D9]"}`}>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default Hero3D;
+}

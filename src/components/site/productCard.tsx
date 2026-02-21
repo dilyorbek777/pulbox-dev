@@ -4,7 +4,7 @@ import Button from "./button"
 
 function ProductCard({ image, title, description, category }: { image: string, title: string, description: string, category: string }) {
     return (
-        <div className="hover:scale-[1.1] transition-all flex mx-auto flex-col max-[880px]:w-[330px] max-md:w-[384px] w-[384px] shadow-xl rounded-3xl overflow-hidden mb-5">
+        <div className="hover:scale-[1.1] transition-all flex mx-auto flex-col max-[880px]:w-[330px] max-md:w-[324px] w-[384px] shadow-xl rounded-3xl overflow-hidden mb-5">
             <img
                 className="w-full h-[200px] bg-center bg-contain  overflow-hidden object-cover"
                 src={image}
