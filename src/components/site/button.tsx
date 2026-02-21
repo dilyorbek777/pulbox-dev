@@ -1,6 +1,5 @@
-function Button({ text, btntype, className,onclick }: {
+function Button({ text, btntype, className }: {
     text: string | React.ReactNode;
-    onclick?: Function;
     btntype: "primary" | "secondary";
     className?: string
 }) {
@@ -8,9 +7,9 @@ function Button({ text, btntype, className,onclick }: {
         <>
 
             {btntype === "primary" ? (
-                <button onClick={() => onclick} className={`bg-primary text-[16px] text-secondary px-[26px] py-[14.5px] rounded-[15px] hover:bg-[#17BE86]/80 ${className}`}>{text}</button>
+                <button className={`bg-primary text-[18px] text-secondary px-[45px] py-[17px] rounded-[15px] flex justify-center items-center gap-[8px] ${className}`}>{text}</button>
             ) : (
-                <button onClick={() => onclick} className={`bg-secondary border primary-border  text-[16px] text-primary px-[26px] hover:bg-[#17BE86]/80 py-[14.5px] rounded-[15px] ${className}`}>{text}</button>
+                <button className={`bg-secondary border primary-border  text-[18px] text-primary px-[45px] py-[17px] rounded-[15px] flex justify-center items-center gap-[8px] ${className}`}>{text}</button>
             )}
         </>
     )
