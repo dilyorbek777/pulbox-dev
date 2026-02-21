@@ -34,7 +34,6 @@ export default function Hero3D() {
       .get("/api/v1/carousels/")
       .then((res) => {
         setItems(res.data.results);
-        console.log(res.data["results"]);
 
       })
       .catch((err) => {
@@ -47,8 +46,8 @@ export default function Hero3D() {
 
   return (
     <section className="relative min-h-screen py-[62px] bg-radial-[at_50%_70%] to-gray-100 via-white from-[#17BE86] flex flex-col items-center justify-center overflow-hidden px-4">
-      <div className="text-center mb-1 max-w-2xl">
-        <h1 className="text-[32px] md:text-4xl font-bold text-gray-800">
+      <div className="text-center font-inter  mb-1 max-w-2xl">
+        <h1 className="text-[32px] md:text-4xl tracking-wider font-bold text-gray-800">
           Real vaqtda monitoring platformasi
         </h1>
         <p className="text-gray-600 mt-4 text-[16px] font-sans font-normal">
@@ -113,13 +112,13 @@ export default function Hero3D() {
                 }
             `}
             >
-              <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-              <p className="text-sm opacity-80">{item.description}</p>
+              <h3 className="font-bold text-lg mb-2 tracking-wider font-inter">{item.title}</h3>
+              <p className="text-sm opacity-80 font-inter tracking-wide">{item.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex gap-2 my-10">
+        <div className="flex gap-2 my-10 ">
           {items.map((i, index) => (
             <div key={i.title}
               onClick={() => setActive(index)} className={`flex w-3 h-3 rounded-full ${active === index ? " bg-[#17BE86E8]" : "bg-[#D9D9D9]"}`}>

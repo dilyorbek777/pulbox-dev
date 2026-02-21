@@ -30,7 +30,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, image, username }) =>
       <video
         ref={videoRef}
         src={src}
-        className="w-[280px] bg-contain overflow-hidden object-cover h-[500px] bg-center  rounded-3xl bg-[#00000076]"
+        className="w-[280px]  bg-contain overflow-hidden object-cover h-[500px] bg-center  rounded-3xl bg-[#00000076]"
       />
 
 
@@ -40,14 +40,14 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, image, username }) =>
           {isPlaying ? " " : <IoPlayCircleOutline className='text-5xl'
             onClick={toggleVideo} />}
         </button>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full font-inter">
 
           <div className="flex items-center justify-start gap-3">
 
             <img className='w-8 h-8 rounded-full' src={image} alt={title} />
             <p className='text-[12px] font-medium'>{username}</p>
           </div>
-          <p className='text-[12px] my-2'>{title.length >= maxLeng ? title.slice(0, maxLeng) + "..." : title}</p>
+          <p className='text-[12px] my-2 text-wrap'>{title.length >= maxLeng ? title.slice(0, maxLeng) + "..." : title}</p>
         </div>
 
 
