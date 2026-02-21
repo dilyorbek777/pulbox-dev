@@ -48,12 +48,12 @@ function Navbar() {
                     <ul className="links  flex gap-[38px] items-center justify-between text-lg font-sans  max-lg:text-[15px] max-lg:gap-[10px] max-md:flex-col max-md:gap-5 font-semibold ">
                         {links.map((link) => (
                             <li key={link.href}>
-                                <a href={link.href}>{link.label}</a>
+                                <a href={link.href} className="font-inter tracking-wider">{link.label}</a>
                             </li>
                         ))}
 
                     </ul>
-                    <Button text="Bog’lanish" btntype="primary" className="text-lg" />
+                    <Button text="Bog’lanish" btntype="primary" className="font-inter text-lg" />
 
                 </div>
 

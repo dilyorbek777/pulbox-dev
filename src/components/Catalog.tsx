@@ -1,96 +1,3 @@
-// import { useState } from "react"
-
-// function Catalog() {
-//     const [category, setCategory] = useState("");
-//     const catalogs = [
-//         {
-//             id: 101,
-//             title: "Smart Car Wash Pro",
-//             description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-//             image_url: "path/to/image1.jpg",
-//             button_text: "Batafsil",
-//             type: "brand"
-//         },
-//         {
-//             id: 102,
-//             title: "Smart Car Wash Pro",
-//             description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-//             image_url: "path/to/image2.jpg",
-//             button_text: "Batafsil",
-//             type: "politics"
-//         },
-//         {
-//             id: 103,
-//             title: "Smart Car Wash Pro",
-//             description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-//             image_url: "path/to/image3.jpg",
-//             button_text: "Batafsil",
-//             type: "sports"
-//         },
-//         {
-//             id: 104,
-//             title: "Smart Car Wash Pro",
-//             description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-//             image_url: "path/to/image4.jpg",
-//             button_text: "Batafsil",
-//             type: "machine"
-//         },
-//         {
-//             id: 105,
-//             title: "Smart Car Wash Pro",
-//             description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-//             image_url: "path/to/image5.jpg",
-//             button_text: "Batafsil",
-//             type: "brand"
-//         },
-//         {
-//             id: 106,
-//             title: "Smart Car Wash Pro",
-//             description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-//             image_url: "path/to/image6.jpg",
-//             button_text: "Batafsil",
-//             type: "sports"
-//         }
-//     ]
-//     let classe = ""
-
-
-
-//     return (
-//         <div className="bg-[#F9FAFB] w-full">
-//             <div className=" py-12 max-w-[1440px] w-full mx-auto">
-//                 <div className="flex flex-col items-center justify-center gap-5">
-
-//                     <h2 className="font-bold text-[32px]">Mahsulotlar katalogi</h2>
-//                     <p className="text-[#4B5563] text-sm">Biznesingiz turiga mos keluvchi maxsus yechimlarni tanlang</p>
-
-//                 </div>
-//                 <div className="flex">
-//                     {catalogs.map((c) => (
-//                         <button
-//                             className={`text-[16px] ${classe == "ready" ? " bg-primary" : ""} text-secondary px-[26px] py-[14.5px] rounded-[15px] ${category >= c.type ? "bg-primary" : "bg-secondary"}`}
-//                             onClick={() => {
-//                                 if (category == "") {
-
-//                                     setCategory(c.type);
-//                                 }
-//                                 console.log(category);
-
-//                             }}
-//                         > {c.type}</button>
-//                     ))}
-//                 </div>
-
-
-//             </div>
-//         </div>
-
-//     )
-// }
-
-// export default Catalog
-
-
 import { useState } from "react";
 import ProductCard from "./site/productCard";
 
@@ -140,8 +47,8 @@ const Catalog: React.FC = () => {
             <div className="py-12 max-w-[1440px] w-full mx-auto">
                 <div className="flex flex-col items-center justify-center gap-5">
 
-                    <h2 className="font-bold text-[32px]">Mahsulotlar katalogi</h2>
-                    <p className="text-[#4B5563] text-sm">Biznesingiz turiga mos keluvchi maxsus yechimlarni tanlang</p>
+                    <h2 className="font-bold text-[32px] max-sm:text-[20px]">Mahsulotlar katalogi</h2>
+                    <p className="text-[#4B5563] text-center text-sm">Biznesingiz turiga mos keluvchi maxsus yechimlarni tanlang</p>
 
                 </div>
                 {/* FILTER BUTTONS */}

@@ -19,6 +19,7 @@
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
     "tailwindcss": "^4.1.18",
+    "tailwindcss-font-inter": "^4.0.0",
     "three": "^0.182.0"
   },
   "devDependencies": {
