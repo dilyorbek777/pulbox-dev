@@ -198,7 +198,7 @@ export default function ReasonPullbox() {
     poster: warning,
   };
   return (
-    <section className="max-w-263 w-full flex flex-col gap-30 outline-2 mx-auto mt-25 h-auto">
+    <section className="max-w-263 w-full flex flex-col gap-30  mx-auto mt-25 h-auto">
       <div className=" max-w-[754px] w-full mx-auto mb-8">
         <div className="max-w-96.5 w-full mx-auto flex justify-between items-center mb-8">
           <h1 className="text-3xl text-[#000000] font-bold ">Nega aynan</h1>

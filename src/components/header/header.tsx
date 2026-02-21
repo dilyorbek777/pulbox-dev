@@ -9,7 +9,7 @@ export default function Header() {
     <div
       className="max-w-[1263px] h-[811px]  sm:max-w-[1263px] m-auto mt-28px p-3
     w-full  sm:mt-[100px] flex flex-row overflow-y-hidden overflow-x-hidden
-    max-[1200px]:flex-col items-center max-[1200px]:h-[1250px] justify-between max-[1000px]:mt-32 max-[800px]:h-[1040px] max-[740px]:h-265 max-[650px]:h-240 max-[490px]:h-220"
+    max-[1200px]:flex-col items-center max-[1200px]:h-[1250px] justify-between max-[1000px]:mt-32 max-[800px]:h-[1220px] max-[740px]:h-265 max-[650px]:h-240 max-[490px]:h-235"
     >
       <LeftSide />
       <RightSide />
