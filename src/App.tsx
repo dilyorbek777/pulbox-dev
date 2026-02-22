@@ -9,6 +9,7 @@ import Header from "./components/header/header"
 import VibeVideos from "./components/VibeVideos"
 import Catalog from "./components/Catalog"
 import ReasonPullbox from "./components/resolution/resolution"
+import AffordableRates from "./components/affordavleRates/affordableRates"
 // import VibeVideos from "./components/VibeVideos"
 // test commit message
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
       <Hero3D />
       <ReasonPullbox/>
+      <AffordableRates/>
       <CustomerReview />
       <VibeVideos />
       <Catalog />
