@@ -7,7 +7,9 @@ export default function AffordableRates(){
                 <h1 className="text-[#000000] font-bold text-4xl leading-8 text-center">Qulay tariflar</h1>
                 <p  className="text-[#000000] font-medium text-[16px] leading-8 ">Biznesingiz hajmidan kelib chiqqan holda o’zingizga mos tarif tanlang</p>
             </div>
-            <div>
+            <div className="w-full flex justify-between h-[534px] items-center outline-1">
+                <Rates/>
+                <Rates/>
                 <Rates/>
             </div>
         </section>
