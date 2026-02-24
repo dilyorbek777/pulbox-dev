@@ -10,6 +10,7 @@ import VibeVideos from "./components/VibeVideos"
 import Catalog from "./components/Catalog"
 import ReasonPullbox from "./components/resolution/resolution"
 import AffordableRates from "./components/affordavleRates/affordableRates"
+import Faq from "./components/faqSection/faq"
 // import VibeVideos from "./components/VibeVideos"
 // test commit message
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <CustomerReview />
       <VibeVideos />
       <Catalog />
+      <Faq/>
       {/* <MonitoringCarousel /> */}
     </div>
   )
