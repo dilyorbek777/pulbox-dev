@@ -1,32 +1,64 @@
+import { useEffect, useState } from "react";
+
+type Quest = {
+  answer: string;
+  id: string | number;
+  order:number;
+  question:string;
+}
+
+interface QuestProps{
+  ques:Quest;
+}
+
 export default function Faq() {
+  const [question, setQuestion] = useState<Quest[]>([]);
+  useEffect(function () {
+    const fetchFaq = async () => {
+      try {
+        const request = await fetch(`https://api.pulbox.uz/api/v1/faqs/`);
+        if (!request.ok) throw new Error(`setver xatosi: ${request.status}`);
+
+        const data = await request.json();
+        console.log(data.results);
+        setQuestion(data.results);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchFaq();
+  }, []);
+
   return (
     <section className="max-w-[804px] w-full flex flex-col outline-3 mx-auto text-[#000000] mb-30">
       <div className="max-w-[762px] w-full mx-auto mb-16 ">
-        <h1 className="text-[48px] leading-6 font-semibold mb-7 text-center">Tez-tez so'raladigan savollar</h1>
+        <h1 className="text-[48px] leading-6 font-semibold mb-7 text-center">
+          Tez-tez so'raladigan savollar
+        </h1>
         <p className="text-[20px] leading-6 text-center">
           Bu yerda PulBox haqida eng ko'p berilgan savollarga javob olishingiz
           mumkin.
         </p>
       </div>
       <div className="w-full flex flex-col gap-5">
-        <Questions/>
-        <Questions/>
-        <Questions/>
-        <Questions/>
-        <Questions/>
-        <Questions/>
-        <Questions/>
-        <Questions/>
+        {question.map((ques) => {
+          return <Questions key={ques.id} ques={ques} />;
+        })}
       </div>
-      <button className="text-[24px] leading-none text-[#FFFFFF] py-3.5 px-11 bg-[#17BE86] hover:bg-[#65cdaa] transition-all duration-200 active:translate-y-1.5 border rounded-[10px] w-51 mx-auto mt-16">Bog'lanish</button>
+      <button className="text-[24px] leading-none text-[#FFFFFF] py-3.5 px-11 bg-[#17BE86] hover:bg-[#65cdaa] transition-all duration-200 active:translate-y-1.5 border rounded-[10px] w-51 mx-auto mt-16">
+        Bog'lanish
+      </button>
     </section>
   );
 }
 
-function Questions() {
+function Questions({ ques }:QuestProps) {
+  // const {}
   return (
-    <div className="w-full px-4 flex justify-between items-center bg-[#EEEFEF] py-5.25 border border-0 rounded-2xl">
-      <p className="text-[20px] leading-6 text-[#000000] ">PulBox platformasi qurilmaga ulanadi ?</p>
+    <div className="w-full px-4 flex justify-between items-center bg-[#EEEFEF] hover:bg-[#bdc0c0] duration-150 cursor-pointer py-5.25 border border-0 rounded-2xl">
+      <p className="text-[20px] leading-6 text-[#000000] ">
+        {ques.question}
+      </p>
       <svg
         width="20"
         height="12"

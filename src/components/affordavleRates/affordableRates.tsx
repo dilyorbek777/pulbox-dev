@@ -4,7 +4,7 @@ import Rates from "./rates";
 // import { p } from "framer-motion/client";
 // import { title } from "process";
 
-type Rate = {
+export type Rate = {
   id: number | string;
   title: string;
   is_popular: boolean;
@@ -33,7 +33,7 @@ export default function AffordableRates() {
         if (!res.ok) throw new Error(`Server xatosi: ${res.status}`);
 
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
         return setRatesData(data.results ?? []);
       } catch (error) {
         console.error("Fetch xatosi:", error);
