@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Rates from "./rates";
+// import { log } from "three";
+// import { p } from "framer-motion/client";
 // import { title } from "process";
 
 type Rate = {
@@ -13,10 +15,15 @@ type Rate = {
   features: { id: string; name: string }[];
 };
 
+// interface ErrorHandle{
+//   errorHandle:string;
+// }
+
 export default function AffordableRates() {
   const [ratesData, setRatesData] = useState<Rate[]>([]);
   const [isSelected, setIsSelected] = useState<string|number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  // const [errorHandle, setErrorHandle] = useState<string>("")
   // const [arrayRates, setArrayRates] = useState(rates)
   useEffect(() => {
     const fetchPlans = async () => {
@@ -26,9 +33,11 @@ export default function AffordableRates() {
         if (!res.ok) throw new Error(`Server xatosi: ${res.status}`);
 
         const data = await res.json();
+        console.log(data)
         return setRatesData(data.results ?? []);
       } catch (error) {
         console.error("Fetch xatosi:", error);
+        // setErrorHandle(`Fetch xatosi: ${error}`)
       } finally {
         setIsLoading(false);
       }
@@ -42,6 +51,7 @@ export default function AffordableRates() {
       {isLoading ? (
         <div className="flex justify-center items-center min-h-[400px]">
           <p className="text-xl text-gray-600">Tariflar yuklanmoqda...</p>
+          {/* <ErrorComp ErrorHandle={errorHandle}/> */}
         </div>
       ) : (
         <div className="max-w-291 w-full mx-auto outline-2 flex flex-col gap-20">
@@ -71,3 +81,9 @@ export default function AffordableRates() {
     </>
   );
 }
+
+// function ErrorComp(){
+//   return (
+//     <p></p>
+//   )
+// }
