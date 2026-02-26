@@ -25,7 +25,7 @@ export default function LeftSide() {
       <div className="max-w-[485px] w-full flex justify-between max-[560px]:flex-col gap-4 max-[560px]:m-auto p-5">
         <Button 
           btntype="primary"
-          className="max-[400px]:px-4 max-[400px]:py-4"
+          className="max-[400px]:px-4 max-[400px]:py-4 py-[17px]"
           text={
             <>
               Demo ko'rish
