@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-export default function Image({ src,
+function Image({ src,
     alt,
     className }: {
         src: string,
@@ -19,3 +19,4 @@ export default function Image({ src,
 
     )
 }
+export default Image
