@@ -1,5 +1,5 @@
 import Button from "./button"
-import Image from "./Image";
+import Image from "./image";
 
 
 
