@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductCard from "./site/productCard";
 import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type Category = "Hammasi" | "web" | "mobile" | "design";
 
@@ -79,6 +80,7 @@ const Catalog: React.FC = () => {
             })
             .finally(() => {
                 setLoading(false);
+
             });
     }, [])
     const filteredProjects =
@@ -88,6 +90,8 @@ const Catalog: React.FC = () => {
 
     return (
         <div style={{ padding: "40px" }} className="bg-[#F9FAFB] w-full">
+
+
             <div className="py-12 max-w-[1440px] w-full mx-auto">
                 <div className="flex flex-col items-center justify-center gap-5">
 
@@ -121,6 +125,10 @@ const Catalog: React.FC = () => {
                 <div
                     className="grid-cols-3 my-12 max-md:grid-cols-1 grid items-center gap-y-10 max-[1270px]:grid-cols-2"
                 >
+                    {loading ? <>
+                        <AiOutlineLoading3Quarters className="text-[#17BE86] animate-spin transition-all mx-auto" />
+                    </> : ""}
+                    {error ? error : ""}
                     {filteredProjects.map((project) => (
                         <ProductCard
                             category={project.category}
