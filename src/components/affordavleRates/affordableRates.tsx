@@ -29,6 +29,7 @@ export default function AffordableRates() {
 
         const data = await res.json();
         setRatesData(data.results ?? []);
+        console.log(data);
       } catch (error) {
         console.error("Fetch xatosi:", error);
       } finally {
@@ -40,12 +41,11 @@ export default function AffordableRates() {
   }, []);
 
   const OPTIONS = {
-  loop: true,
-  align: "start" as const,
-  dragFree: false,
-  slidesToScroll: 1,
-  // containScroll: `trimSnaps`,   // ← bu to‘g‘ri
-};
+    loop: true,
+    align: "start" as const,
+    dragFree: false,
+    slidesToScroll: 1,
+  };
 
   const [emblaRef] = useEmblaCarousel(OPTIONS);
 
@@ -79,7 +79,10 @@ export default function AffordableRates() {
       </div>
 
       {/* Karusel */}
-      <div className="embla overflow-hidden h-150 py-8 outline-1 " ref={emblaRef}>
+      <div
+        className="embla overflow-hidden h-150 py-8 outline-1 "
+        ref={emblaRef}
+      >
         <div
           className="
             embla__container 

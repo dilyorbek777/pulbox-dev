@@ -30,7 +30,7 @@ export default function Faq() {
   }, []);
 
   return (
-    <section className="max-w-[804px] w-full flex flex-col outline-3 mx-auto text-[#000000] mb-30 px-10">
+    <section className="max-w-[804px] w-full flex flex-col mx-auto text-[#000000] mb-30 px-10">
       <div className="max-w-[762px] w-full mx-auto mb-16 max-[800px]:mb-12 ">
         <h1 className="text-[48px] leading-6 font-semibold mb-7 text-center max-[800px]:text-[40px] max-[590px]:text-[32px]">
           Tez-tez so'raladigan savollar

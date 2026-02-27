@@ -1,0 +1,10 @@
+.mapDarkFilter iframe {
+  filter: invert(92%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* yoki agar global bo‘lsa globals.css da shunchaki: */
+.map-dark-filter iframe {
+  filter: invert(92%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* dark mode kerak bolsa */
