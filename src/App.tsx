@@ -11,7 +11,7 @@ import Faq from "./components/faqSection/faq"
 import Footer from "./components/footer/footer"
 // import VibeVideos from "./components/VibeVideos"
 import NewsSection from "./components/NewsSection"
-// test commit message
+// test commit messageler
 function App() {
   return (
     <div className='text-3xl bg-secondary text-p'>
