@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { IoPlayCircleOutline } from "react-icons/io5";
 
+
 interface VideoCardProps {
   src: string;
   title: string;
@@ -32,6 +33,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, image, username }) =>
         src={src}
         className="w-[280px]  bg-contain overflow-hidden object-cover h-[500px] bg-center  rounded-3xl bg-[#00000076]"
       />
+
+      
 
 
       <div onClick={toggleVideo} className={`cursor-pointer player-controls flex items-center justify-between  flex-col w-full h-full text-white absolute left-0 bottom-0 z-10 px-6 py-6 ${isPlaying ? " bg-transparent" : " bg-[#00000076]"}`}>

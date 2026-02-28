@@ -1,49 +1,97 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./site/productCard";
+import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-type Category = "all" | "web" | "mobile" | "design";
+type Category = "Hammasi" | "web" | "mobile" | "design";
 
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-    category: Category;
-    image_url: string
+
+interface CategoryType {
+    id: "d38d8551-65ac-4f64-9f39-65e55afffe9a",
+    name: string,
+    slug: Category,
+    is_active: true
 }
 
-const projects: Project[] = [
-    {
-        id: 102,
-        title: "Smart Car Wash Pro",
-        description: "Avtomobillarni yuvish shoxobchalari uchun to'liq avtomatlashtirilgan boshqaruv tizimi.",
-        image_url: "https://picsum.photos/200/305",
-        category: "web"
-    },
-    { id: 1, image_url: "https://picsum.photos/200/300", title: "Smart Car Wash Pro", description: "Web loyiha", category: "web", },
-    { id: 2, image_url: "https://picsum.photos/250/300", title: "E-Commerce App", description: "Mobile loyiha", category: "mobile" },
-    { id: 3, image_url: "https://picsum.photos/200/350", title: "Portfolio UI", description: "Design loyiha", category: "design" },
-    { id: 4, image_url: "https://picsum.photos/240/300", title: "CRM System", description: "Web loyiha", category: "web" },
-    { id: 5, image_url: "https://picsum.photos/220/300", title: "Taxi App", description: "Mobile loyiha", category: "mobile" },
-    { id: 6, image_url: "https://picsum.photos/290/300", title: "Dashboard UI", description: "Design loyiha", category: "design" },
-];
+interface Products {
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+    media_type: string;
+    media_type_display: string;
+    file: string;
+    file_url: string;
+    category: string;
+    category_info: {
+        id: string;
+        name: string;
+        slug: string;
+        is_active: boolean;
+    };
+}
 
-const categories: { label: string; value: Category }[] = [
-    { label: "Hammasi", value: "all" },
-    { label: "Web", value: "web" },
-    { label: "Mobile", value: "mobile" },
-    { label: "Design", value: "design" },
-];
+
 
 const Catalog: React.FC = () => {
-    const [activeCategory, setActiveCategory] = useState<Category>("all");
+    const [activeCategory, setActiveCategory] = useState<Category>("Hammasi");
 
+    const [categories, setCategories] = useState<CategoryType[]>([]);
+    const [products, setProducts] = useState<Products[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+    useEffect(() => {
+        if (activeCategory == "Hammasi") {
+            axios
+                .get(`/api/v1/categories/`)
+                .then((res) => {
+                    setCategories(res.data.results);
+
+                })
+                .catch((err) => {
+                    setError(err.message);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        } else {
+            axios
+                .get(`/api/v1/categories/${activeCategory}`)
+                .then((res) => {
+                    setCategories(res.data.results);
+
+                })
+                .catch((err) => {
+                    setError(err.message);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        }
+
+        axios
+            .get("/api/v1/products/")
+            .then((res) => {
+                setProducts(res.data.results);
+
+            })
+            .catch((err) => {
+                setError(err.message);
+            })
+            .finally(() => {
+                setLoading(false);
+
+            });
+    }, [])
     const filteredProjects =
-        activeCategory === "all"
-            ? projects
-            : projects.filter((project) => project.category === activeCategory);
+        activeCategory === "Hammasi"
+            ? products
+            : products.filter((project) => project.category_info.slug === activeCategory);
 
     return (
         <div style={{ padding: "40px" }} className="bg-[#F9FAFB] w-full">
+
+
             <div className="py-12 max-w-[1440px] w-full mx-auto">
                 <div className="flex flex-col items-center justify-center gap-5">
 
@@ -55,13 +103,19 @@ const Catalog: React.FC = () => {
                 <div className="w-full  px-2 flex my-8 overflow-x-auto items-center gap-10">
 
                     <div className="flex items-center px-5 justify-center gap-4 min-w-max w-full whitespace-nowrap ">
-                        {categories.map((cat) => (
+                        <button
+                            key={"hammasi"}
+                            onClick={() => setActiveCategory("Hammasi")}
+                            className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory==="Hammasi"? "bg-[#17BE86] text-white":" border border-[#000000] text-[#000000]"}`}
+                        >Hammasi</button>
+                        {categories.map((cat, i) => (
+
                             <button
-                                key={cat.value}
-                                onClick={() => setActiveCategory(cat.value)}
-                                className="bg-[#17BE86] text-white transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] "
+                                key={i}
+                                onClick={() => setActiveCategory(cat.slug)}
+                                className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory===cat.slug ? "bg-[#17BE86] text-white":" border border-[#000000] text-[#000000]"}`}
                             >
-                                {cat.label}
+                                {cat.name}
                             </button>
                         ))}
                     </div>
@@ -69,16 +123,20 @@ const Catalog: React.FC = () => {
 
                 {/* CARDS */}
                 <div
-                    className="grid-cols-3 max-md:grid-cols-1 grid items-center gap-y-10 max-[1270px]:grid-cols-2"
+                    className="grid-cols-3 my-12 max-md:grid-cols-1 grid items-center gap-y-10 max-[1270px]:grid-cols-2"
                 >
+                    {loading ? <>
+                        <AiOutlineLoading3Quarters className="text-[#17BE86] animate-spin transition-all mx-auto" />
+                    </> : ""}
+                    {error ? error : ""}
                     {filteredProjects.map((project) => (
-
                         <ProductCard
                             category={project.category}
                             key={project.id}
                             description={project.description}
-                            image={project.image_url}
-                            title={project.title}
+                            image={project.file_url}
+                            type={project.media_type}
+                            title={project.name}
                         />
                     ))}
                 </div>

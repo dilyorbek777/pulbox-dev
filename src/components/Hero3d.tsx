@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 interface Item {
   title: "string",
   description: "string",
-  image: "string",
+  phone_image: "string",
+  desktop_image: "string",
   is_active: true
 }
 
@@ -58,10 +59,10 @@ export default function Hero3D() {
 
       {error == null ? "" : error}
 
-      <div className="w-full flex flex-col  items-center py-16 ">
+      <div className="w-full flex flex-col max-md:gap-8 items-center py-16 ">
 
         {/* ===== CAROUSEL ===== */}
-        <div className="relative my-5 w-full max-w-6xl h-[620px] max-lg:h-[300px] flex items-center justify-center perspective">
+        <div className="relative max-md:hidden my-5 w-full max-w-6xl h-[620px] max-lg:h-[300px] flex items-center justify-center perspective">
           {items.map((item, index) => {
             const position = getPosition(index);
 
@@ -87,7 +88,7 @@ export default function Hero3D() {
                 }}
               >
                 <img
-                  src={item.image}
+                  src={item.desktop_image}
                   alt={item.title}
                   className={`max-w-[816px] max-lg:h-[300px] overflow-hidden h-[603px] object-cover drop-shadow-2xl ${loading ? 'scale-110 blur-2xl grayscale'
                     : 'scale-100 blur-0 grayscale-0'}`}
@@ -97,10 +98,44 @@ export default function Hero3D() {
           })}
         </div>
 
+        <div className="relative md:hidden my-5 w-full max-w-6xl h-[620px] max-lg:h-[300px] flex items-center justify-center perspective">
+          {items.map((item, index) => {
+            const position = getPosition(index);
 
+            return (
+              <div
+
+                onClick={() => setActive(index)}
+                key={item.title}
+                className={`absolute  transition-all duration-500 ease-in-out
+              ${position === "center" &&
+                  "z-30 scale-100 translate-x-0 rotate-y-0 opacity-100"
+                  }
+              ${position === "left" &&
+                  "z-20 -translate-x-[500px] max-lg:-translate-x-[200px] rotate-y-[75deg] opacity-50"
+                  }
+              ${position === "right" &&
+                  "z-20 translate-x-[500px] max-lg:translate-x-[200px] rotate-y-[-75deg] opacity-50"
+                  }
+              ${position === "hidden" && "opacity-0 scale-75 pointer-events-none"}
+              `}
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <img
+                  src={item.phone_image}
+                  alt={item.title}
+                  className={`max-w-[816px] max-lg:h-[450px]   overflow-hidden h-[603px] object-cover drop-shadow-2xl ${loading ? 'scale-110 blur-2xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0'}`}
+                />
+              </div>
+            );
+          })}
+        </div>
 
         {/* ===== CARDS ===== */}
-        <div className="grid max-[625px]:grid-cols-1 grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-5xl">
+        <div className="grid max-[625px]:grid-cols-1 grid-cols-2 md:grid-cols-4 my-5 gap-6 mt-12 max-w-5xl">
           {items.map((item, index) => (
             <div
               key={item.title}

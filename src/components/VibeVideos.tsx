@@ -34,9 +34,9 @@ function VibeVideos() {
 
     return (
         <div className='max-w-[1440px] py-14 w-full flex-col mx-auto flex items-center justify-between'>
-            <div className="flex my-12 font-inter font-black px-1.5 justify-between w-full">
-                <h3 className='font-bold text-3xl'>Vibe Videos</h3>
-                <a href="#" className='flex text-lg font-medium items-center justify-center text-[#17BE86]'>Instagramda ko'rish <BsArrowUpRight /></a>
+            <div className="flex my-12 font-inter  font-black px-1.5 justify-between w-full">
+                <h3 className='font-bold text-3xl max-md:text-[20px]'>Vibe Videos</h3>
+                <a href="#" className='flex text-lg max-md:text-[14px] font-medium items-center justify-center text-[#17BE86]'>Instagramda ko'rish <BsArrowUpRight /></a>
             </div>
             <div className="flex w-full items-center justify-between overflow-x-auto ">
                 <div className="flex whitespace-nowrap items-center justify-between w-[1440px] gap-[26px] px-3 max-w-[1440px]">
