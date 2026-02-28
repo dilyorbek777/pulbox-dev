@@ -1,7 +1,4 @@
 import type { ReactNode } from "react";
-// import Logo from "../site/logo";
-// import logo from "../../assets/images/logo.png";
-import logo from "../../assets/images/logo.png";
 import warning from "../../assets/images/warning.png";
 import tick from "../../assets/images/tick.png";
 
@@ -18,6 +15,7 @@ interface TitleTwoSides {
 interface ProblemSideProps {
   resolution: ProblemItem[];
   statusObj: TitleTwoSides;
+  className?:string;
 }
 
 // interface Items {
@@ -31,6 +29,7 @@ export default function ReasonPullbox() {
     prTitle: string;
     description: string;
     icon: React.ReactNode; // yoki JSX.Element, lekin ReactNode eng mos keladi
+    className?:string;
   }
 
   const problems: StrNumTypes[] = [
@@ -198,37 +197,34 @@ export default function ReasonPullbox() {
     poster: warning,
   };
   return (
-    <section className="max-w-263 w-full flex flex-col gap-30 outline-2 mx-auto mt-25 h-auto">
+    <section className="max-w-263 w-full flex flex-col gap-6  mx-auto mt-24 max-[900px]:mt-11 mb-70 h-auto px-3">
       <div className=" max-w-[754px] w-full mx-auto mb-8">
-        <div className="max-w-96.5 w-full mx-auto flex justify-between items-center mb-8">
-          <h1 className="text-3xl text-[#000000] font-bold ">Nega aynan</h1>
-          <div className="max-w-46 w-full">
-            <img src={logo} alt="pullBox logo" className="w-full" />
-          </div>
+        <div className="max-w-96.5 w-full mx-auto flex justify-between items-center mb-6 max-[900px]:mb-2">
+          <h1 className="text-[32px] leading-10 text-[#000000] font-bold max-[900px]:text-[20px] mx-auto">Nega aynan Pulbox</h1>
         </div>
-        <div className="max-w-190 w-full">
-          <p className="font-[500] text-[20px] text-[#000000] leading-[40px] text-center">
+        <div className="max-w-190  max-[900px]:max-w-130 mx-auto  w-full">
+          <p className="font-[400] leading-6 text-[20px] text-[#4B5563] text-center max-[900px]:text-[14px] max-[900px]:leading-5.5 ">
             Biznesingizdagi eng og'riqli muammolarni zamonaviy texnologiyalar
             yordamida hal qilamiz.
           </p>
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-3 max-[700px]:flex-col items-center">
         <ProblemSide statusObj={warningObj} resolution={problems} />
-        <ProblemSide statusObj={soluitongObj} resolution={soluiton} />
+        <ProblemSide statusObj={soluitongObj} resolution={soluiton} className={`max-[900px]:bg-blue-50`}/>
       </div>
     </section>
   );
 }
 
-function ProblemSide({ resolution, statusObj }: ProblemSideProps) {
+function ProblemSide({ resolution, statusObj, className }: ProblemSideProps) {
   const { poster, title } = statusObj;
 
   return (
-    <div className="max-w-126 w-full p-8 border border-[#D1D5DB] rounded-3xl">
+    <div className={`max-w-126 w-full p-8 border border-[#D1D5DB] rounded-3xl max-[900px]:shadow-[0_10px_12px_-1px_#00000040] ${className}`} >
       <div className="max-w-74 w-full flex gap-4 items-center mb-[37px]">
         <img className="max-w-10 w-full" src={poster} alt="warning sign" />
-        <h1 className="text-[#111827] text-[24px] font-bold ">{title}</h1>
+        <h1 className="text-[#111827] text-[24px] font-bold max-[900px]:text-[20px] ">{title}</h1>
       </div>
       <div className="flex flex-col gap-6">
         {resolution.map((items) => {
@@ -245,7 +241,7 @@ function WarningDescriptions({ fullObj }: { fullObj: ProblemItem }) {
     <div className="flex gap-4 w-full items-center">
       <div>{icon}</div>
       <div>
-        <h3 className="text-[13.6px] text-[#111827] font-bold mb-1">
+        <h3 className="text-[13.6px] text-[#111827] font-bold mb-1 max-[900px]:text-[16px]">
           {prTitle}
         </h3>
         <p className="text-[#4B5563] text-[12px] ">{description}</p>
