@@ -7,7 +7,7 @@ import Catalog from "./components/Catalog"
 import ContactSection from "./components/ContactPage"
 import ReasonPullbox from "./components/resolution/resolution"
 import NewsSection from "./components/NewsSection"
-// test commit message
+// test commit messageler
 function App() {
   return (
     <div className='text-3xl bg-secondary text-p'>
