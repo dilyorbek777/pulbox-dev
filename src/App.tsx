@@ -6,6 +6,7 @@ import VibeVideos from "./components/VibeVideos"
 import Catalog from "./components/Catalog"
 import ContactSection from "./components/ContactPage"
 import ReasonPullbox from "./components/resolution/resolution"
+import NewsSection from "./components/NewsSection"
 // test commit message
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <CustomerReview />
       <VibeVideos />
       <Catalog />
+      <NewsSection  />
       <ContactSection />
     </div>
   )

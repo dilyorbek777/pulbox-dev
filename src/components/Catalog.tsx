@@ -106,14 +106,14 @@ const Catalog: React.FC = () => {
                         <button
                             key={"hammasi"}
                             onClick={() => setActiveCategory("Hammasi")}
-                            className="bg-[#17BE86] text-white transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] "
+                            className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory==="Hammasi"? "bg-[#17BE86] text-white":" border border-[#000000] text-[#000000]"}`}
                         >Hammasi</button>
                         {categories.map((cat, i) => (
 
                             <button
                                 key={i}
                                 onClick={() => setActiveCategory(cat.slug)}
-                                className="bg-[#17BE86] text-white transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] "
+                                className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory===cat.slug ? "bg-[#17BE86] text-white":" border border-[#000000] text-[#000000]"}`}
                             >
                                 {cat.name}
                             </button>

@@ -10,7 +10,7 @@ function ProductCard({ image, type, title, description, category }: { type: stri
             {type === "image" ? <Image
                 className="w-full h-[200px] bg-center bg-contain  overflow-hidden object-cover"
                 src={image}
-                alt={title} /> : <video autoPlay loop className="" src={image} />}
+                alt={title} /> : <video autoPlay muted loop className="" src={image} />}
             <div className="flex flex-col p-6 gap-3 font-inter">
                 <h3 className="font-bold text-lg">{title}</h3>
                 <p className="text-[12px] text-[#4B5563]">{description.length >= maxLength ? description.slice(0, maxLength) + "..." : description}</p>
