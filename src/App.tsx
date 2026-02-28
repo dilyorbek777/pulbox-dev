@@ -1,18 +1,16 @@
 import "./index.css"
-import Logo from "./components/site/logo"
-import Button from "./components/site/button"
-import Input from "./components/site/input"
-import Accordion from "./components/site/accordion"
-import Hero3D from "./components/Hero3d"  
+import Hero3D from "./components/Hero3d"
 import CustomerReview from "./components/CustomerReview"
 import Header from "./components/header/header"
 import VibeVideos from "./components/VibeVideos"
 import Catalog from "./components/Catalog"
+import ContactSection from "./components/ContactPage"
 import ReasonPullbox from "./components/resolution/resolution"
 import AffordableRates from "./components/affordavleRates/affordableRates"
 import Faq from "./components/faqSection/faq"
 import Footer from "./components/footer/footer"
 // import VibeVideos from "./components/VibeVideos"
+import NewsSection from "./components/NewsSection"
 // test commit message
 function App() {
   return (

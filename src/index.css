@@ -1,10 +1,33 @@
 @import "tailwindcss";
 
+@font-face {
+
+    font-family: 'Inter';
+    src: url('./assets/fonts/Inter/static/Inter_18pt-Regular.ttf');
+}
+
+@font-face {
+
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins/Poppins-Medium.ttf');
+}
+
+
+.font-inter {
+    font-family: 'Inter';
+}
+
+.font-poppins {
+    font-family: 'Poppins';
+}
+
 :root {
     --primary-color: #17BE86;
     --secondary-color: #ffffff;
     --tertiary-color: #000000;
 }
+
+
 
 .bg-primary {
     background-color: var(--primary-color);

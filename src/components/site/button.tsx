@@ -7,7 +7,7 @@ function Button({ text, btntype, className }: {
         <>
 
             {btntype === "primary" ? (
-                <button className={`bg-primary text-[18px] text-secondary px-[45px] py-[17px] rounded-[15px] flex justify-center items-center gap-[8px] ${className}`}>{text}</button>
+                <button className={`bg-primary text-[18px] text-secondary px-[45px] py-[10px] rounded-[15px] flex justify-center items-center gap-[8px] ${className}`}>{text}</button>
             ) : (
                 <button className={`bg-secondary border primary-border  text-[18px] text-primary px-[45px] py-[17px] rounded-[15px] flex justify-center items-center gap-[8px] ${className}`}>{text}</button>
             )}
