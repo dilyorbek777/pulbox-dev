@@ -44,6 +44,8 @@ export default function Hero3D() {
         setLoading(false);
       });
   }, []);
+  console.log(error);
+
 
   return (
     <section className="relative min-h-screen py-[62px] bg-radial-[at_50%_70%] to-gray-100 via-white from-[#17BE86] flex flex-col items-center justify-center overflow-hidden px-4">
@@ -57,7 +59,6 @@ export default function Hero3D() {
         </p>
       </div>
 
-      {error == null ? "" : error}
 
       <div className="w-full flex flex-col max-md:gap-8 items-center py-16 ">
 

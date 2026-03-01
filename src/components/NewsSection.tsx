@@ -64,6 +64,8 @@ const NewsSection = () => {
 
             });
     }, [])
+    console.log(error);
+
     return (
         <section className="max-w-[1440px] py-14 w-full flex-col mx-auto flex items-center justify-between">
             <div className="flex my-12 font-inter font-black px-1.5 justify-between w-full flex-col" >
@@ -93,7 +95,6 @@ const NewsSection = () => {
                         {loading ? <>
                             <AiOutlineLoading3Quarters className="text-[#17BE86] animate-spin transition-all mx-auto" />
                         </> : ""}
-                        {error ? error : ""}
                         {news.map((item) => (
                             <div
                                 key={item.id}
@@ -131,14 +132,14 @@ const NewsSection = () => {
                         ))}
 
                     </div>
-                    
+
                 </div>
                 <a
-                        href="/news"
-                        className="text-[#17BE86] text-[20px] mx-auto md:hidden text-sm font-medium flex items-center gap-1 hover:underline"
-                    >
-                        Barchasini ko‘rish <BsArrowRight size={16} />
-                    </a>
+                    href="/news"
+                    className="text-[#17BE86] text-[20px] mx-auto md:hidden text-sm font-medium flex items-center gap-1 hover:underline"
+                >
+                    Barchasini ko‘rish <BsArrowRight size={16} />
+                </a>
             </div>
         </section>
     );
