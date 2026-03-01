@@ -7,26 +7,24 @@ import ContactSection from "./components/ContactPage"
 import ReasonPullbox from "./components/resolution/resolution"
 import AffordableRates from "./components/affordavleRates/affordableRates"
 import Faq from "./components/faqSection/faq"
-import Footer from "./components/footer/footer"
 import VibeVideos from "./components/VibeVideos"
 import NewsSection from "./components/NewsSection"
 // test commit message
 function App() {
   return (
     <div className='text-3xl bg-secondary text-p'>
-      <Header/>
+      <Header />
       <Hero3D />
-      <ReasonPullbox/>
-      <AffordableRates/>
+      <ReasonPullbox />
+      <AffordableRates />
       <CustomerReview />
       <VibeVideos />
       <Catalog />
-    <NewsSection/>
-      <Faq/>
-      
-      <ContactSection/>
-      
-      <Footer/>
+      <NewsSection />
+      <Faq />
+
+      <ContactSection />
+
     </div>
   )
 }
