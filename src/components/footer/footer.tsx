@@ -80,7 +80,7 @@ function LinkThroughDestination() {
     },
   ];
   return (
-    <div className=" mx-auto max-[600px]:mx-0">
+    <div className="w-full mx-auto max-[600px]:mx-auto max-[600px]:max-w-[303px]">
       <div className="mb-[17px] w-40 ">
         <img src={logo} alt="company logo" />
       </div>
