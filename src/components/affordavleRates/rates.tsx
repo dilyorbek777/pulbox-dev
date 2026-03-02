@@ -46,22 +46,25 @@ export default function Rates({
       className={`
         group
         cursor-pointer
-        transition-all duration-300
+        transition-all duration-300 ease-in-out
         max-w-93 w-full
         [&_h]:leading-8 [&_p]:leading-8
         text-[#000000]
         py-8 px-6
         rounded-[20px]
         flex flex-col justify-between
+        overflow-hidden
+        
         ${
           isSelected === items.id
-            ? "h-[534px] outline outline-2 outline-[#17BE86] shadow-[0_5px_50px_15px_rgba(23,190,134,0.4)]"
-            : "h-116 outline outline-[#4B5563] hover:h-[534px] hover:outline-[#17BE86] hover:outline-2 hover:shadow-[0_5px_50px_15px_rgba(23,190,134,0.4)]"
+            ? "h-[537px]  outline outline-2 outline-[#17BE86] shadow-[0_5px_50px_15px_rgba(23,190,134,0.4)] " 
+            : "h-[480px]  max-[705px]:h-auto outline outline-[#4B5563] hover:h-[537px] hover:outline-[#17BE86] hover:outline-2 hover:shadow-[0_5px_50px_15px_rgba(23,190,134,0.4)]"
         }
+        
       `}
     >
-      <div>
-        <h5 className="font-bold text-[20px]">{title}</h5>
+      <div className="max-[500px]:mb-4">
+        <h5 className={`font-bold text-[20px] duration-400  ${isSelected === items.id ? "text-[32px]" : "text-[20px]"}`}>{title}</h5>
         <p className="font-medium text-[15px] mb-6">{subtitle}</p>
         <h2 className="font-bold text-[32px] mb-6">
           {price} uzs/{period}
