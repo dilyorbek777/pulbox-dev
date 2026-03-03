@@ -14,8 +14,8 @@ function ProductCard({ image, type, title, description, category }: { type: stri
             <div className="flex flex-col p-6 gap-3 font-inter">
                 <h3 className="font-bold text-lg">{title}</h3>
                 <p className="text-[12px] text-[#4B5563]">{description.length >= maxLength ? description.slice(0, maxLength) + "..." : description}</p>
-                <a href={category}>
-                    <Button btntype="primary" className="w-full my-2 rounded-[25px] py-2.5" text="Batafsil" />
+                <a  href={`/product/${category}`}>
+                    <Button  btntype="primary" className="w-full cursor-pointer my-2 rounded-[25px] py-2.5" text="Batafsil" />
                 </a>
             </div>
         </div>

@@ -83,10 +83,13 @@ const Catalog: React.FC = () => {
 
             });
     }, [])
+
+    console.log(error);
     const filteredProjects =
         activeCategory === "Hammasi"
             ? products
             : products.filter((project) => project.category_info.slug === activeCategory);
+            
 
     return (
         <div style={{ padding: "40px" }} className="bg-[#F9FAFB] w-full">
@@ -106,14 +109,14 @@ const Catalog: React.FC = () => {
                         <button
                             key={"hammasi"}
                             onClick={() => setActiveCategory("Hammasi")}
-                            className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory==="Hammasi"? "bg-[#17BE86] text-white":" border border-[#000000] text-[#000000]"}`}
+                            className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory === "Hammasi" ? "bg-[#17BE86] text-white" : " border border-[#000000] text-[#000000]"}`}
                         >Hammasi</button>
                         {categories.map((cat, i) => (
 
                             <button
                                 key={i}
                                 onClick={() => setActiveCategory(cat.slug)}
-                                className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory===cat.slug ? "bg-[#17BE86] text-white":" border border-[#000000] text-[#000000]"}`}
+                                className={`  transition-all hover:bg-[#17BE86]/80  shadow-sm shadow-[#9AFDDC] rounded-3xl text-[16px] text-secondary px-[26px] py-[10.5px] ${activeCategory === cat.slug ? "bg-[#17BE86] text-white" : " border border-[#000000] text-[#000000]"}`}
                             >
                                 {cat.name}
                             </button>
@@ -128,10 +131,10 @@ const Catalog: React.FC = () => {
                     {loading ? <>
                         <AiOutlineLoading3Quarters className="text-[#17BE86] animate-spin transition-all mx-auto" />
                     </> : ""}
-                    {error ? error : ""}
+
                     {filteredProjects.map((project) => (
                         <ProductCard
-                            category={project.category}
+                            category={project.id}
                             key={project.id}
                             description={project.description}
                             image={project.file_url}

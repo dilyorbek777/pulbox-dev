@@ -22,14 +22,11 @@ function CustomerReview() {
 
 
     useEffect(() => {
-
         const datatel = localStorage.getItem("results")
-
         if (loading === true && datatel) {
             const loadingRes = JSON.parse(datatel) as Review[]
             setReview(loadingRes)
         }
-
 
         axios
             .get("/api/v1/testimonial/")
