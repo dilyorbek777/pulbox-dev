@@ -26,7 +26,6 @@ export default function AffordableRates() {
         setIsLoading(true);
         const res = await fetch("https://api.pulbox.uz/api/v1/plan/");
         if (!res.ok) throw new Error(`Server xatosi: ${res.status}`);
-
         const data = await res.json();
         setRatesData(data.results ?? []);
         console.log(data);
@@ -36,7 +35,6 @@ export default function AffordableRates() {
         setIsLoading(false);
       }
     };
-
     fetchPlans();
   }, []);
 
@@ -63,11 +61,9 @@ export default function AffordableRates() {
     );
   }
 
-  // Cheksiz aylanish uchun kamida 2 marta takrorlaymiz
-  const duplicatedRates = [...ratesData, ...ratesData];
-
+  // duplicatedRates ni olib tashladik – endi faqat asl ratesData ishlatiladi
   return (
-    <div className="max-w-291 w-full mx-auto flex flex-col gap-20 px-4 sm:px-6 lg:px-8 ">
+    <div className="max-w-294 w-full mx-auto overflow-hidden max-[705px]:max-w-[370px] flex flex-col gap-12 px-4 sm:px-6 lg:px-8 ">
       {/* Sarlavha qismi */}
       <div className="max-w-132 w-full flex flex-col gap-6 mx-auto text-center">
         <h1 className="text-[#000000] font-bold text-4xl leading-8">
@@ -80,30 +76,38 @@ export default function AffordableRates() {
 
       {/* Karusel */}
       <div
-        className="embla overflow-hidden h-150 py-8 outline-1 "
+        className="embla  w-full overflow-hidden h-145 py-0 max-[705px]:h-auto mx-auto max-[500px]:overflow-auto max-[500px]:h-auto"
         ref={emblaRef}
       >
         <div
           className="
-            embla__container 
-            flex 
+            embla__container
+            h-135
+            flex
             -ml-4 sm:-ml-6 lg:-ml-8
+            mx-auto
+            max-[705px]:flex-col max-[705px]:h-auto gap-8
           "
         >
-          {duplicatedRates.map((item, index) => (
+          {ratesData.map((item) => (  // ← duplicatedRates o'rniga ratesData
             <div
-              key={`${item.id}-${index}`}
+              key={item.id}  // id unique bo'lgani uchun index kerak emas
               className="
-              flex items-center
+                flex items-center
                 embla__slide
                 pl-4 sm:pl-6 lg:pl-8
-                flex-[0_0_85%]           // mobil: ~1 ta
+                flex-[0_0_85%]
                 min-w-0
-                sm:flex-[0_0_50%]        // sm+: ~2 ta
-                lg:flex-[0_0_33.333%]    // lg+: roppa-rosa 3 ta
+                sm:flex-[0_0_50%]
+                lg:flex-[0_0_33.333%]
+                max-[430px]:px-7
+                max-[500px]:h-170
+                max-w-90
               "
             >
-              <div className="w-full rounded-2xl border border-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.1)] bg-white overflow-hidden">
+              <div
+                className="w-full max-w-93 rounded-2xl border border-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.1)] bg-white overflow-hidden max-[500px]:overflow-auto max-[705px]:max-w-[364px] max-[500px]:h-auto"
+              >
                 <Rates
                   items={item}
                   isSelected={isSelected}
